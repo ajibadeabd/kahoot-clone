@@ -1,8 +1,9 @@
 <template class='a'>
   <div class="">
     <div class=" center row">
-      <h2>Join a Game</h2>
       <div class="col offset-s1 offset-m2 offset-l3 m8 s10 l6">
+      <h2>Join a Game</h2>
+
 
         <form @submit.prevent="enter">
               <h5>

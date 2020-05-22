@@ -39,7 +39,11 @@
                     Add question
                     </router-link>
                     </span>
-                {{kahoot.KahootTitle}} 
+
+                <router-link  :to="{ name: 'host-Question', params: { id: kahoot.KahootTitle }}"> 
+                {{kahoot.KahootTitle }} 
+                </router-link>
+                
                 <span class="right material-icons" @click="deleteEachKahoot(kahoot.KahootTitle,kahoot._id)"> 
                     delete
                     </span>

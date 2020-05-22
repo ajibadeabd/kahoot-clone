@@ -9,15 +9,18 @@
           Choose a game below or <router-link to="/host">
               Create your Own
           </router-link>
-         
+         <div v-for='(kahoot,index) in kahoot' :key="index" class="card">
+
+           <router-link to='/'>
+           {{kahoot.KahootTitle}} <br><br>
+           {{kahoot.code}} <br>
+
+           </router-link>
+            
+         </div>
            
            </h5> 
-            <h2 class="btn white black-text">
-               Math quiz
-           </h2>
-            <h2 class="btn white black-text">
-               Random Trivia           </h2>
-          <br>
+           
           
          
    
@@ -30,12 +33,22 @@
 </template>
 
 <script>
+import Api from '../../config/Api'
 export default {
-  name: 'HelloWorld',
-  data () {
+data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      kahoot:''
     }
+  },
+  created(){
+    Api().get(`/displayAllKahoot/`)
+    .then(res=>{
+      if (res.data.success) {
+        this.kahoot=res.data.kahoot
+      }
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 }
 </script>
@@ -45,6 +58,9 @@ export default {
 .btn{
   width: 
   100%;
+}
+.card{
+  min-height:10vh ;
 }
 
 </style>

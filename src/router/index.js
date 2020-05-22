@@ -9,6 +9,7 @@ import yours from '@/components/yours'
 import register from '@/components/register'
 import login from '@/components/login'
 import hostId from '@/components/hostEachKahoot'
+import displayHostQuestion from '@/components/displayHostQuestion'
 import router from '../router'
 import store from '../store'
 
@@ -74,7 +75,17 @@ export default new Router({
       meta:{
         requiresGuest:true
       }
-    }
+    },
+    // displayHostQuestion
+    {
+      path: '/host-Question/:id',
+      name: 'host-Question',
+      component: displayHostQuestion,
+      meta:{
+        requiresAuth:true
+      },
+      props:true
+    },
   ]
 })
 

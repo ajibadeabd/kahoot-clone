@@ -5,6 +5,9 @@
     <div class="container blue lighten-1 center">
         {{success}}
     </div>
+    <div class="container red lighten-1 center">
+        {{error}}
+    </div>
     <div class="col  offset-m2 offset-l3 m8 s12 l6">  
     <div class="col center offset-m2 offset-l3 m8 s12 l6"> 
         <h4>{{Title}}</h4>
@@ -90,7 +93,8 @@ export default {
     correctAnswer:'',
     Title:'',
     user:'',
-    success:''
+    success:'',
+    error:''
         }
     },
     methods:{
@@ -122,6 +126,7 @@ export default {
       .then(res=>{
             if(res.data.success) {
               this.success=res.data.msg
+              this.error=''
               this.Answer1 =''
             this.Answer2 =''
             this.Answer3 =''
@@ -130,11 +135,15 @@ export default {
             this.correctAnswer='' 
             }
       }).catch(err=>{
-        console.log(err.response.data.msg)
+        // console.log(err.response.data.msg)
+              this.success=''
+              this.error=err.response.data.msg
+
       })
       }
        else{
-        console.log('please fill in all necessary in put')
+              this.error='please fill in all necessary input'
+
       } 
     },
     },
