@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import create from '@/components/create'
 import host from '@/components/host'
-import user from '@/components/joinedUser'
+import viewJoinedUser from '@/components/joinedUser'
 import dis from '@/components/displayQU'
 import yours from '@/components/yours'
 import register from '@/components/register'
@@ -46,19 +46,25 @@ export default new Router({
 
     },
     {
-      path: '/user',
-      name: 'user',
-      component: user
+      path: '/viewJoinedUser/:id/:title',
+      name: 'viewJoinedUser',
+      component: viewJoinedUser,
+      props:true,
+      meta:{
+        requiresAuth:true
+      }
     },
     {
-      path: '/display',
+      path: '/display/:id/:title',
       name: 'display',
-      component: dis
+      component: dis,
+      props:true
     },
     {
-      path: '/yours',
+      path: '/displayJoinedUserPage/:id',
       name: 'yours',
-      component: yours
+      component: yours,
+      props:true
     },
     {
       path: '/register',
@@ -76,7 +82,6 @@ export default new Router({
         requiresGuest:true
       }
     },
-    // displayHostQuestion
     {
       path: '/host-Question/:id',
       name: 'host-Question',

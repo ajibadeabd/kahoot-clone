@@ -41,7 +41,7 @@ data () {
     }
   },
   created(){
-    Api().get(`/displayAllKahoot/`)
+    Api().get(`/displayAllKahoot`)
     .then(res=>{
       if (res.data.success) {
         this.kahoot=res.data.kahoot

@@ -11,15 +11,17 @@ export default new Vuex.Store({
       token:localStorage.getItem('token') || '',
         user: {},
         status:'',
-        success:null,
+        success:'',
         error:null,
+        displayQuestion:'miekjjfkek'
     },
     getters: {
         isLoggedIn: state=>!!state.token ,
           authState: state =>state.status,
           user: state =>state.user,
           error: state=>state.error,
-          success: state=>state.success
+          success: state=>state.success,
+          displayQuestion: state=>state.displayQuestion
        },
     actions: {
         async signOut({commit}){
@@ -68,6 +70,11 @@ export default new Vuex.Store({
         },
         register_error(state,err){
             state.error= err.response.data.msg
+        },
+        start_game(state,payload){
+            state.displayQuestion=payload
+
+
         },
         signOut(state){
 
